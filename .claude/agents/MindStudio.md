@@ -1,0 +1,2 @@
+Project Session & Context Monitor Prompt:*"Act as an automated context and token monitor for this session.At the start of major responses or milestones, briefly state the key working memory decisions.If our ongoing session approaches a high context load (above ~75%), immediately trigger a context alert before proceeding with heavy multi-file edits.Provide a concise summary of current architecture, pending tasks, and key files so I can run /compact or /clear and resume without losing context."*  
+
