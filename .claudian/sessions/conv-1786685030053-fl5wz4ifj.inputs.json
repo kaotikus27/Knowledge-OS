@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1786685030053-fl5wz4ifj",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786685030236-mtm4fwg",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1786685030044-o7u4nwy",
+      "timestamp": 1786685030044,
+      "rawDisplayText": "hey whats up?",
+      "canonicalText": "hey whats up?",
+      "context": {
+        "currentNote": {
+          "path": "CLAUDE.md"
+        }
+      },
+      "images": [],
+      "contentDigest": "6ff1b85fa2f427983fc38a732b3f8dadc8f6d7642574b70e567558ae81a329e0",
+      "providerUserMessageId": "f95989fb-058b-4fb1-b68d-90c3e16c0ffc",
+      "providerAssistantMessageId": "612b4c88-e4fe-4039-985e-02f3ea0bbffe"
+    }
+  ]
+}

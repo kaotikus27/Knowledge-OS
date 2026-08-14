@@ -1,0 +1,24 @@
+{
+  "id": "conv-1786685030053-fl5wz4ifj",
+  "providerId": "claude",
+  "title": "Start conversation",
+  "titleGenerationStatus": "success",
+  "createdAt": 1786685030099,
+  "lastActivityAt": 1786685041321,
+  "sessionId": "31317961-aa55-4f01-96cc-a1d0fa34d798",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "31317961-aa55-4f01-96cc-a1d0fa34d798"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 28837,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 1000000,
+    "contextTokens": 28839,
+    "percentage": 3,
+    "contextWindowIsAuthoritative": true
+  }
+}

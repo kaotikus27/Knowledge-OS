@@ -1,4 +1,4 @@
-﻿# Business Map of Content
+# Business Map of Content
 
 ## Purpose
 
