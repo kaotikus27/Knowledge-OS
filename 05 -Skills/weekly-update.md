@@ -1,19 +1,22 @@
 # Skill: Weekly Update
 
-Interview the user to update all context files across the vault — the root CLAUDE.md, GOALS.md, and each project's CLAUDE.md. Keeps everything current so Claude always has accurate context.
+Interview the user to refresh continuity across the vault — root `handoff.md` and `GOALS.md`,
+plus each Active project's `handoff.md` (and `memory.md`/`DECISIONS.md`/`backlog.md` when
+something durable actually changed). Keeps everything current without letting these files grow
+without bound.
 
 ## When to Use
 
 - User says "weekly update", "let's do a weekly review", "update my vault", or similar
-- It's been a week or more since the last update (check the "Last updated" date in the Weekly Update section)
+- It's been a week or more since `handoff.md`'s `updated` frontmatter date
 
 ## How It Works
 
-1. Scan all context files to understand current state
-2. Interview the user at the meta level (big picture, goals, weekly pulse)
-3. Walk through each project for status updates
-4. Update all files
-5. Optionally create a weekly review note
+1. Scan root and per-project continuity files to understand current state
+2. Interview at the meta level (root `handoff.md` + `GOALS.md`)
+3. Walk each Active project for a status check-in
+4. Update all files, respecting each file's token budget
+5. Optionally create a dated review note in `04 -Reviews/`
 
 ---
 
@@ -22,130 +25,138 @@ Interview the user to update all context files across the vault — the root CLA
 Read everything before asking a single question:
 
 ```bash
-# Find all project folders
-ls -d "03 Projects"/*/ 2>&1 || echo "No projects yet"
+cat "handoff.md"
+cat "GOALS.md"
+ls -d "02 - Projects/Active"/*/ 2>&1 || echo "No active projects"
 ```
 
-**Read these files:**
-- `CLAUDE.md` — focus on the **Weekly Update** section (what was there last time), **My Goals & Current Progress**, and **My Current Projects & Overviews**
-- `GOALS.md` — if it exists, scan the whole thing for sections with numbers, dates, or progress that might need updating
-- Each project's `CLAUDE.md` — specifically the **Current Status** section at the bottom
-
-**What you're building:** A mental map of what was true last time, so you can ask targeted questions about what changed — not make the user repeat everything from scratch.
+For each active project folder, read its `handoff.md` (Current Objective, Open Issues, Next
+Action) and `PROJECT-CONTEXT.md` (Current Phase). Build a mental map of what was true last time
+so you can ask targeted questions — not make the user repeat everything from scratch.
 
 ---
 
 ## Phase 2: Meta-Level Interview
 
-This covers the root CLAUDE.md and GOALS.md. Ask conversationally, referencing what you read in Phase 1 so the user knows you're caught up.
+Covers root `handoff.md` and `GOALS.md`. Reference what you read in Phase 1 so the user knows
+you're caught up.
 
-### Weekly Pulse
+### Root Handoff Check-In
 
-Show the user what the Weekly Update section currently says (or note that it's blank), then ask:
+Show the user the current `Current Objective` / `Open Issues` / `Next Action` from root
+`handoff.md`, then ask:
 
-- **What's working right now?**
-- **What's not working?**
-- **What are you sitting on or need to decide?**
-- **What are you feeling pulled toward?**
-- **Any deadlines or time-sensitive things coming up?**
+- **What's the current objective now** — same as last time, or has it moved?
+- **Anything resolved, blocked, or newly open** since last time?
+- **What's the next concrete action?**
 
-These map directly to the Weekly Update section fields. If a field hasn't changed, the user can say "same" and you keep what was there.
+If nothing changed, the user can say "same" and the file is left alone.
 
 ### Goals Check-In
 
-Reference the current state from **My Goals & Current Progress** in CLAUDE.md and anything in GOALS.md. Then ask:
+Reference `GOALS.md`'s Current Objective and Current State. Ask:
 
-- **Any progress on your main goal since last time?** (New numbers, milestones hit, setbacks)
-- **Has the plan changed at all?** (New strategy, dropped something, added something)
-- **Anything new on the risk/runway front?**
+- **Any progress since last time?** New numbers, milestones, setbacks.
+- **Has the plan changed?**
+- **Anything new on risks or time-sensitive factors?**
 
-**Keep this tight.** If nothing changed, move on. Don't make them re-justify their existing goals every week.
-
-### GOALS.md Specifics
-
-If GOALS.md exists and has trackable items (income numbers, milestone dates, skill targets, etc.), briefly surface anything that looks like it might need updating:
-
-> "Your GOALS.md shows [X]. Still accurate, or should I update that?"
-
-If GOALS.md doesn't exist, skip this — don't create one here.
+**Keep this tight.** If nothing changed, move on — don't make them re-justify existing goals.
 
 ---
 
-## Phase 3: Project Updates
+## Phase 3: Project Check-Ins
 
-Walk through **each project folder** found in Phase 1. For each one:
+Walk each folder under `02 - Projects/Active/`. For each one:
 
-1. **Show them the current status** from that project's CLAUDE.md (the Current Status section)
-2. Ask: **"What's the update on [Project Name]? Any status change or progress this week?"**
-3. If nothing changed, they can say "no change" and you move on
+1. Show the current `handoff.md` Current Objective / Open Issues
+2. Ask: **"What's the update on [Project Name]?"**
+3. If nothing changed, they say "no change" and you move on
+4. If a project's state has fundamentally changed (shipped, paused, abandoned), flag that this
+   is a **move**, not just an update — see Phase 4's note on lifecycle moves
 
-**Keep this fast.** One question per project, maybe a quick follow-up if something big happened. This is a check-in, not a deep dive.
-
-**If a project's CLAUDE.md doesn't have a Current Status section**, ask for a quick status anyway and note that you'll add the section when you update the file.
+**Keep this fast.** One question per project, a follow-up only if something significant happened.
 
 ---
 
-## Phase 4: Update All Files
+## Phase 4: Update Files
 
-After the interview, make all the edits. Show the user a summary of what you're changing before writing.
+Show the user a summary of every edit before writing.
 
-### Root CLAUDE.md — update these sections:
+### Root `handoff.md`
 
-**Weekly Update section:**
-```markdown
-## Weekly Update
+Replace-and-refresh (this file tracks *current* state, not history) — update `Current
+Objective`, `Open Issues`, `Next Action`, and bump the `updated` frontmatter date. Don't let it
+exceed roughly 2,000 tokens; if it's grown past that, trim resolved issues rather than deleting
+the file's structure.
 
-> **Last updated:** [today's date]
+### `GOALS.md`
 
-- What's working: [from interview]
-- What's not working: [from interview]
-- What I'm sitting on / need to decide: [from interview]
-- What I'm feeling pulled toward: [from interview]
-- Any deadlines or time-sensitive things: [from interview]
+Only touch sections the user actually updated. Bump `updated`.
+
+### Each active project's `handoff.md`
+
+Same replace-and-refresh treatment as root. Only durable, still-relevant decisions get promoted
+to that project's `memory.md` — everything else stays in `handoff.md` and gets replaced next time.
+
+### Project `memory.md` — only if something durable changed
+
+`memory.md` is durable and reviewed, not a running log. Only append here if the user described
+an actual standing decision or constraint (something that should survive past this session) —
+not routine progress. If nothing durable happened, leave it untouched. Keep it under roughly
+3,000 tokens; review the file if it's crept past 4,000.
+
+### Project `DECISIONS.md` — only if a real decision was made
+
+Add a row (`ID | Date | Decision | Status | Consequence`) only for decisions actually accepted
+by the owner this session — never mark a proposed decision as accepted without the owner saying so.
+
+### Project `backlog.md`
+
+Add newly-mentioned open items, check off anything the user says is done or already moved into
+`handoff.md`/`DECISIONS.md`.
+
+### Lifecycle moves (project state actually changed)
+
+If Phase 3 surfaced a project that's genuinely done, paused, or dead, don't just edit its
+`handoff.md` in place — move the whole folder per `Projects-MOC.md`'s lifecycle
+(`Active → On-Hold or Completed → Archive`):
+
+```bash
+mv "02 - Projects/Active/[Project Name]" "02 - Projects/[Completed or On-Hold or Archive]/[Project Name]"
 ```
 
-**My Goals & Current Progress** — only update if something actually changed. Don't touch it if the user said "no change."
-
-**My Current Projects & Overviews** — update the **Status** line and overview paragraph for any project whose status changed. Leave unchanged projects alone.
-
-### GOALS.md — if it exists, update any specific numbers/dates/milestones the user called out. Don't restructure it.
-
-### Each project's CLAUDE.md — update the **Current Status** section:
-
-```markdown
-## Current Status
-
-> **Last updated:** [today's date]
-> **Status:** [updated status from interview]
-
-[Any additional context the user provided about what happened this week]
-```
-
-**Critical rule:** Only edit sections related to status and progress. Never rewrite a project's CLAUDE.md structure, process, rules, or other sections during a weekly update.
+Per `Projects-MOC.md`'s Archive Guidance: before moving to Archive, make sure `DECISIONS.md`
+captures the decisions worth preserving and `handoff.md` has one final, clean status — don't let
+completed execution history pile up in an active-style handoff file.
 
 ---
 
 ## Phase 5: Weekly Review Note (Optional)
 
-After all files are updated, ask the user:
+After all files are updated, ask:
 
-> "Want me to create a weekly review note in your reviews folder? If so, where do you keep them and how do you like them structured?"
+> "Want me to write a review note for this week?"
 
-**If yes:** Create a dated note in whatever folder/format they describe. Use the interview answers as the content — you already have everything you need.
+**If yes:** Create `04 -Reviews/YYYY-MM-DD - Weekly Review.md` (per
+`00 - System/Naming-Conventions.md`'s time-based record format), using the interview answers as
+content. Check `04 -Reviews/` for a prior note first and match its format if one exists.
 
-**If no:** Skip it. Don't push.
-
-**If they have an existing format** (a template, past review notes you can reference): Match their style. Read a previous review note if one exists to understand the format before writing.
+**If no:** Skip it, don't push.
 
 ---
 
-## Summary of What Gets Updated
+## Summary of What Gets Touched
 
 | File | What changes |
 |------|-------------|
-| Root `CLAUDE.md` → Weekly Update | All five pulse fields + date |
-| Root `CLAUDE.md` → Goals & Progress | Only if numbers/plan/risks changed |
-| Root `CLAUDE.md` → Projects & Overviews | Status line + overview for changed projects |
-| `GOALS.md` | Any trackable items that changed (if file exists) |
-| Each project `CLAUDE.md` → Current Status | Status + date + what happened |
-| Weekly review note | Optional — user's choice and format |
+| Root `handoff.md` | Current Objective, Open Issues, Next Action, `updated` date |
+| `GOALS.md` | Only sections the user says changed |
+| Each active project's `handoff.md` | Full replace-and-refresh |
+| Project `memory.md` | Only if a durable decision/constraint was made |
+| Project `DECISIONS.md` | Only owner-accepted decisions |
+| Project `backlog.md` | New items added, done items checked off |
+| Project folder location | Only on an actual lifecycle move (Active → On-Hold/Completed/Archive) |
+| `04 -Reviews/YYYY-MM-DD - Weekly Review.md` | Optional, user's choice |
+
+**Never touched by this skill:** `AGENTS.md`, `CONTEXT-POLICY.md`, `me.md` — those are router,
+policy, and identity files, not weekly-cadence content.
