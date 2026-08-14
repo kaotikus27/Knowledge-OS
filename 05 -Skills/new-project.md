@@ -4,15 +4,14 @@ Scaffold a new project under `02 - Projects/` by interviewing the user, duplicat
 template, and writing the project's authority files in this vault's actual schema — not a
 generic numbered-folder template.
 
-## How It Works
+--- 
+## How It Works 
+1. **Interview:** Ask the user **one question at a time** (6 questions max).
+2. **Duplicate Template:** Copy `02 - Projects/(PROJECT TEMPLATE)/` into the designated lifecycle folder (`02 - Projects/Active/` or `02 - Projects/Incubating/`). This preserves the local `.obsidian` config and plugins so every project opens with the same Obsidian workspace setup. 
+3. **Generate Authority Files:** Write `PROJECT-CONTEXT.md` and continuity files (`memory.md`, `handoff.md`, `DECISIONS.md`, `backlog.md`) if the project warrants them based on its lifecycle status. 
+4. **Sensible Defaults:** If the user doesn't have an answer yet, use a sensible default and leave a `TODO` rather than pushing for detail they don't have.  
 
-1. Interview the user one question at a time (6 questions max)
-2. Duplicate `02 - Projects/(PROJECT TEMPLATE)/` into the right lifecycle folder (preserves
-   `.obsidian` config/plugins so every project opens with the same Obsidian setup)
-3. Write `PROJECT-CONTEXT.md`, and `memory.md`/`handoff.md`/`DECISIONS.md`/`backlog.md` if the
-   project warrants continuity files (see Projects-MOC.md's rule below)
-4. If the user doesn't have an answer yet, use a sensible default and leave a TODO rather than
-   pushing for detail they don't have
+---
 
 ## Interview Questions (Ask One at a Time)
 

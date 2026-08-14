@@ -27,7 +27,9 @@ You can start the automated setup by telling claude:
 
 > *'run the brain-setup skill in the 05 skills folder'*
 
-He'll interview you and fill in the CLAUDE.md file.
+He'll interview you and fill in your `me.md` (identity, working style, strengths/blind spots) and `GOALS.md` (goals and current progress).
+
+*(Note: this does NOT touch `CLAUDE.md`. That file is a deliberately tiny adapter — the real routing lives in `AGENTS.md` and `CONTEXT-POLICY.md`, so instructions stay in one place instead of being duplicated across every AI tool's config file. An empty-looking `CLAUDE.md` is correct, not broken.)*
 
 #### STEP 2:
 
@@ -37,7 +39,7 @@ Next you'll want to take some time to journal about your life goals and put your
 
 #### STEP 3:
 
-Start a new Obsidian session ('Open folder as a vault') in the  `03 Projects > (PROJECT TEMPLATE)`Folder
+Start a new Obsidian session ('Open folder as a vault') in the `02 - Projects > (PROJECT TEMPLATE)` folder
 
 > Customize the appearance, settings, and plugins of Obsidian and now every project you create will have the same plugins and appearance.
 
@@ -61,7 +63,7 @@ Open an obsidian vault in each individual project to build those systems, run th
 
 #### STEP 6:
 
-> Use the 'weekly-review' skill in the 05 Skills folder at the end of each week to update all of your CLAUDE.md's and keep everything up to date.
+> Use the 'weekly-update' skill in the `05 -Skills` folder at the end of each week to refresh `memory.md` / `handoff.md` and keep everything up to date.
 
 
 #### STEP 7:
