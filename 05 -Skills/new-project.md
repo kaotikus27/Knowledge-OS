@@ -206,7 +206,10 @@ Do not mark proposed decisions accepted without owner approval.
 Open, not-yet-scheduled work. Carried forward across sessions — check off and move to
 `handoff.md`/`DECISIONS.md` once actually picked up.
 
-- [ ] _(empty — add items as they come up)_
+- [ ] Before any real production deployment, review `05 -Skills/production-security-checklist.md`
+      against this project's actual codebase (exposed keys, auth bypass, input validation,
+      row-level data scoping, outdated dependencies).
+- [ ] _(add items as they come up)_
 ```
 
 ### Step 8: `README.md`
