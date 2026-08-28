@@ -21,4 +21,5 @@ node_modules/
 Thumbs.db
 .obsidian/workspace*
 .claude/settings.local.json
+.claudian/sessions/
 
